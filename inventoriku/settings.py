@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'inventoriku',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost', 
+        'HOST': 'db', 
         'PORT': '3306',
     }
 }
