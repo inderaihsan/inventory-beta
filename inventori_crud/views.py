@@ -18,8 +18,8 @@ def view_all_inventory(request) :
     return Response({'data' : serialized},status= status.HTTP_200_OK)
 
 @api_view(['GET']) 
-def get_invetory_by_id(request, invent_id) : 
-    get_query = Inventory.objects.filter(id = invent_id) 
+def get_inventory_by_id(request, inventory_id) : 
+    get_query = Inventory.objects.filter(id = inventory_id) 
     serialized = InventorySerializer(get_query, many = True).data 
     return Response({'data' : serialized, 'message' :'fetched'}, status=status.HTTP_200_OK) 
 
@@ -31,7 +31,7 @@ def create_inventory(request) :
     type_id = request.data['type_id'] 
     creator = User.objects.get(id = user_id).username
     created_at = datetime.now()
-    Inventory.objects.create(name = name, location = location, user_id = user_id, type = type, created_by = creator, created_at = created_at, type_id = type_id) 
+    Inventory.objects.create(name = name, location = location, created_by = creator, created_at = created_at, type_id = type_id) 
     return Response({'data' : [], 'message' : 'inventori kamu berhasil dibuat!'}, status = status.HTTP_200_OK) 
 
 @api_view(['POST']) 

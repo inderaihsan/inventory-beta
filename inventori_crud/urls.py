@@ -19,4 +19,8 @@ from django.urls import path, include
 from . import views
 urlpatterns = [
     path("init/", views.hello_world),
+    path("items/", views.view_all_inventory),
+    path("create-items/", views.create_inventory),
+    path("update-items/", views.update_inventory),
+    path("get-spesific-items/<str:inventory_id>", views.get_inventory_by_id),
 ]
