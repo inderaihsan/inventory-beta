@@ -17,4 +17,4 @@ EXPOSE 8000
 # FROM mysql:8 
 # ENV MYSQL_ROOT_PASSWORD "" 
 # ENV MYSQL_ALLOW_EMPTY_PASSWORD 1
-# COPY ./inventoriku.sql /docker-entrypoint-init.db/inventoriku.sql
+# COPY ./inventoriku.sql /docker-entrypoint-init.db/inventoriku.sql 

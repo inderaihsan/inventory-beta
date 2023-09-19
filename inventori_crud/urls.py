@@ -23,4 +23,10 @@ urlpatterns = [
     path("create-items/", views.create_inventory),
     path("update-items/", views.update_inventory),
     path("get-spesific-items/<str:inventory_id>", views.get_inventory_by_id),
+    path("delete-items", views.delete_inventory),
+    path("item-type/", views.view_all_type),
+    path("get-spesific-item-type/<str:type_id>", views.get_type_by_id),
+    path("create-item-type", views.create_type),
+    path("update-item-type", views.update_type),
+    path("delete-item-type", views.delete_type),
 ]

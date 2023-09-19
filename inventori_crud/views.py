@@ -53,4 +53,44 @@ def update_inventory(request) :
     inventory_obj.save() 
     return Response({'data' : [], 'message' : 'Inventori kamu berhasil diperbaharui!'}, status = status.HTTP_200_OK) 
 
-    
+@api_view(['POST']) 
+def delete_inventory(request) : 
+    id = request.data['id'] 
+    Inventory.objects.filter(id = id).delete() 
+    return Response({'message' : 'data berhasil dihapus'}, status=status.HTTP_200_OK)
+
+#Master TYPE
+@api_view(['GET']) 
+def view_all_type(request) : 
+    get_query = Type.objects.all() 
+    serialized = TypeSerializer(get_query, many = True).data 
+    return Response({'data' : serialized}, status = status.HTTP_200_OK) 
+
+@api_view(['GET']) 
+def get_type_by_id(request, type_id) : 
+    get_query = Type.objects.filter(id = type_id) 
+    serialized = TypeSerializer(get_query, many = True).data
+    return Response({'data' : serialized}, status = status.HTTP_200_OK) 
+
+@api_view(['POST']) 
+def create_type(request) : 
+    name = request.data['name']
+    unit = request.data['unit'] 
+    Type.objects.create(name = name, unit = unit) 
+    return Response({'message' : 'Spesifikasi tipe berhasil dibuat'}, status = status.HTTP_200_OK) 
+ 
+@api_view(['POST']) 
+def delete_type(request) : 
+    id = request.data['id']  
+    Type.objects.filter(id = id).delete() 
+    return Response({'message' : 'deleted'})   
+
+@api_view(['POST']) 
+def update_type(request) : 
+    id = request.data['id']
+    name = request.data['name']
+    unit = request.data['unit']
+    Type.objects.filter(id = id).update(name = name, unit = unit) 
+    return Response({'message' : 'updated!'})     
+
+#Create Component

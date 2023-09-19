@@ -7,13 +7,6 @@ class User(models.Model):
     id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=255, unique=True)
     password = models.CharField(max_length=255)
-    # is_admin = models.BooleanField(default=False)
-    # created_at = models.DateTimeField()
-    # created_by = models.CharField(max_length=255, null=True, blank=True)
-    # updated_at = models.DateTimeField()
-    # updated_by = models.CharField(max_length=255, null=True, blank=True)
-    # deleted_at = models.DateTimeField(null=True, blank=True)
-    # deleted_by = models.CharField(max_length=255, null=True, blank=True)
     
     class Meta : 
         db_table = 'user'  
