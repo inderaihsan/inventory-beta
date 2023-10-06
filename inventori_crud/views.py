@@ -53,4 +53,3 @@ def update_inventory(request) :
     inventory_obj.save() 
     return Response({'data' : [], 'message' : 'Inventori kamu berhasil diperbaharui!'}, status = status.HTTP_200_OK) 
 
-    
