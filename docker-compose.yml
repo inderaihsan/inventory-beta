@@ -1,0 +1,22 @@
+version : '3.9' 
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+      - MYSQL_HOST=localhost
+      - MYSQL_PORT=3306  # cannot change this port to other number
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=inventoriku
+      - MYSQL_PASSWORD=somepass
+    ports:
+      - "3302:3306"
+  django :
+    image : django-docker:0.0.1
+    command: python3 manage.py runserver 0.0.0.0:8000
+    build: .
+    ports : 
+      - "8000:8000"
+    depends_on:
+      - db

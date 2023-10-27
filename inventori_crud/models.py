@@ -7,13 +7,6 @@ class User(models.Model):
     id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=255, unique=True)
     password = models.CharField(max_length=255)
-    is_admin = models.BooleanField(default=False)
-    created_at = models.DateTimeField()
-    created_by = models.CharField(max_length=255, null=True, blank=True)
-    updated_at = models.DateTimeField()
-    updated_by = models.CharField(max_length=255, null=True, blank=True)
-    deleted_at = models.DateTimeField(null=True, blank=True)
-    deleted_by = models.CharField(max_length=255, null=True, blank=True)
     
     class Meta : 
         db_table = 'user'  
@@ -32,8 +25,8 @@ class Inventory(models.Model) :
     type = models.ForeignKey(Type, on_delete=models.CASCADE)
     created_at = models.DateTimeField()
     created_by = models.CharField(max_length=255, null=True, blank=True)
-    updated_at = models.DateTimeField()
-    updated_by = models.CharField(max_length=255, null=True, blank=True)
+    updated_at = models.DateTimeField(null = True)
+    updated_by = models.CharField(max_length=255)
     deleted_at = models.DateTimeField(null=True, blank=True)
     deleted_by = models.CharField(max_length=255, null=True, blank=True) 
     
@@ -44,7 +37,7 @@ class Product(models.Model):
     code = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     price = models.IntegerField()
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(default = 0)
     created_at = models.DateTimeField()
     created_by = models.CharField(max_length=255, null=True, blank=True)
     updated_at = models.DateTimeField()
@@ -58,6 +51,14 @@ class Product(models.Model):
 class ProductComponent(models.Model) :
     inventory = models.ForeignKey(Inventory, on_delete=models.CASCADE) 
     product = models.ForeignKey(Product, on_delete=models.CASCADE) 
+    number_of_usage = models.IntegerField(blank=True, null=True)
     
     class Meta : 
-        db_table = 'product_component'
+        db_table = 'product_component' 
+        
+class purchase_list(models.Model) : 
+    inventory = models.ForeignKey(Inventory, on_delete = models.CASCADE)  
+    quantity_buy = models.IntegerField(null = False)
+    
+    class Meta : 
+        db_table = 'purchasing'

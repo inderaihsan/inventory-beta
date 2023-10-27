@@ -19,4 +19,22 @@ class ProductSerializer(serializers.ModelSerializer):
 class TypeSerializer(serializers.ModelSerializer): 
     class Meta : 
         model = Type
-        fields ='__all__'
+        fields ='__all__' 
+
+class ProductComponentSerializer(serializers.ModelSerializer): 
+    inventory = InventorySerializer() 
+    product = serializers.SerializerMethodField()
+    class Meta : 
+        model = ProductComponent
+        fields =["inventory", "product", "number_of_usage"]  
+        
+        
+        
+class PurchaseSerializer(serializers.ModelSerializer) : 
+    inventory = InventorySerializer() 
+    class Meta : 
+        model = purchase_list 
+        fields = '__all__'
+        
+        
+        

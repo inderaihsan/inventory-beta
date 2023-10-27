@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-%as=jpl$&p#ylgy$9s!%=hqej)6te4yca_lk-3j@^b_a(_r0=q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', 'inderaihsan.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -81,10 +81,17 @@ DATABASES = {
         'NAME': 'inventoriku',
         'USER': 'root',
         'PASSWORD': 'andriyani747',
-        'HOST': 'localhost', 
+        'HOST': '127.0.0.1', 
         'PORT': '3306',
     }
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": "auction",
+#     }
+# }
 
 
 
